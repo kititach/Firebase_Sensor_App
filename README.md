@@ -19,7 +19,7 @@
 
     <script>
      // REPLACE WITH YOUR web app's Firebase configuration
-      const firebaseConfig = {
+      const firebaseConfig = {                                                  //// เปลี่ยนชุด firebaseConfig ที่ได้จากการสร้าง App
         apiKey: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
         authDomain: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
         databaseURL: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
@@ -27,7 +27,7 @@
         storageBucket: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
         messagingSenderId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
         appId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION"
-      };
+      };                                                                        
 
       // Initialize firebase
       firebase.initializeApp(firebaseConfig);
