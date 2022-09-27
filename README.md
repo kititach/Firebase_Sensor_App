@@ -3,6 +3,7 @@
 ## Edit file index.html
 ```
 <!-- Complete Project Details at: https://RandomNerdTutorials.com/ -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +12,7 @@
     <title>ESP IoT Firebase App</title>
 
     <!-- update the version number as needed -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 
     <!-- include only the Firebase features as you need -->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
@@ -19,15 +20,15 @@
 
     <script>
      // REPLACE WITH YOUR web app's Firebase configuration
-      const firebaseConfig = {                                                  //// เปลี่ยนชุด firebaseConfig ที่ได้จากการสร้าง App
-        apiKey: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
-        authDomain: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
-        databaseURL: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
-        projectId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
-        storageBucket: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
-        messagingSenderId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
-        appId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION"
-      };                                                                        
+      const firebaseConfig = {
+        apiKey: "AIzaSyCylVpE18RtTy-KVtzUOGQu4UpOWB-cHyM",
+        authDomain: "esp8266-shtc3-efabd.firebaseapp.com",
+        databaseURL: "https://esp8266-shtc3-efabd-default-rtdb.firebaseio.com",
+        projectId: "esp8266-shtc3-efabd",
+        storageBucket: "esp8266-shtc3-efabd.appspot.com",
+        messagingSenderId: "680482548907",
+        appId: "1:680482548907:web:1779768a73d1f375161bee"
+      };
 
       // Initialize firebase
       firebase.initializeApp(firebaseConfig);
@@ -83,17 +84,13 @@
         <p><i class="fas fa-tint" style="color:#00add6;"></i> HUMIDITY</p>
         <p><span class="reading"><span id="hum"></span> &percnt;</span></p>
       </div>
-      <!--PRESSURE-->
-      <div class="card">
-        <p><i class="fas fa-angle-double-down" style="color:#e1e437;"></i> PRESSURE</p>
-        <p><span class="reading"><span id="pres"></span> hPa</span></p>
-      </div>
     </div>
   </div>
     <script src="scripts/auth.js"></script>
     <script src="scripts/index.js"></script>
   </body>
 </html>
+
 ```
 
 ## Edit file style.css
@@ -185,45 +182,45 @@ input[type=text], input[type=password] {
 ```
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
- if (user) {
-   console.log("user logged in");
-   console.log(user);
-   setupUI(user);
-   var uid = user.uid;
-   console.log(uid);
- } else {
-   console.log("user logged out");
-   setupUI();
- }
+  if (user) {
+    console.log("user logged in");
+    console.log(user);
+    setupUI(user);
+    var uid = user.uid;
+    console.log(uid);
+  } else {
+    console.log("user logged out");
+    setupUI();
+    }
 });
-
-// login
-const loginForm = document.querySelector('#login-form');
-loginForm.addEventListener('submit', (e) => {
- e.preventDefault();
- // get user info
- const email = loginForm['input-email'].value;
- const password = loginForm['input-password'].value;
- // log the user in
- auth.signInWithEmailAndPassword(email, password).then((cred) => {
-   // close the login modal & reset form
-   loginForm.reset();
-   console.log(email);
- })
- .catch((error) =>{
-   const errorCode = error.code;
-   const errorMessage = error.message;
-   document.getElementById("error-message").innerHTML = errorMessage;
-   console.log(errorMessage);
- });
+   
+  // login
+  const loginForm = document.querySelector('#login-form');
+  loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // get user info
+  const email = loginForm['input-email'].value;
+  const password = loginForm['input-password'].value;
+  // log the user in
+  auth.signInWithEmailAndPassword(email, password).then((cred) => {
+    // close the login modal & reset form
+    loginForm.reset();
+    console.log(email);
+  })
+  .catch((error) =>{
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    document.getElementById("error-message").innerHTML = errorMessage;
+    console.log(errorMessage);
+   });
 });
-
-// logout
-const logout = document.querySelector('#logout-link');
-logout.addEventListener('click', (e) => {
- e.preventDefault();
- auth.signOut();
-});
+   
+  // logout
+  const logout = document.querySelector('#logout-link');
+  logout.addEventListener('click', (e) => {
+  e.preventDefault();
+  auth.signOut();
+  });
 ```
 
 ## Edit file index.js
@@ -236,7 +233,7 @@ const authBarElement = document.querySelector("#authentication-bar");
 // Elements for sensor readings
 const tempElement = document.getElementById("temp");
 const humElement = document.getElementById("hum");
-const presElement = document.getElementById("pres");
+//const presElement = document.getElementById("pres");
 
 // MANAGE LOGIN/LOGOUT UI
 const setupUI = (user) => {
@@ -255,12 +252,12 @@ const setupUI = (user) => {
     // Database paths (with user UID)
     var dbPathTemp = 'UsersData/' + uid.toString() + '/temperature';
     var dbPathHum = 'UsersData/' + uid.toString() + '/humidity';
-    var dbPathPres = 'UsersData/' + uid.toString() + '/pressure';
+    //var dbPathPres = 'UsersData/' + uid.toString() + '/pressure';
 
     // Database references
     var dbRefTemp = firebase.database().ref().child(dbPathTemp);
     var dbRefHum = firebase.database().ref().child(dbPathHum);
-    var dbRefPres = firebase.database().ref().child(dbPathPres);
+    //var dbRefPres = firebase.database().ref().child(dbPathPres);
 
     // Update page with new readings
     dbRefTemp.on('value', snap => {
@@ -271,9 +268,9 @@ const setupUI = (user) => {
       humElement.innerText = snap.val().toFixed(2);
     });
 
-    dbRefPres.on('value', snap => {
+    /*dbRefPres.on('value', snap => {
       presElement.innerText = snap.val().toFixed(2);
-    });
+    });*/
 
   // if user is logged out
   } else{
