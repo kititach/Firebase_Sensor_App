@@ -21,13 +21,13 @@
     <script>
      // REPLACE WITH YOUR web app's Firebase configuration
       const firebaseConfig = {
-        apiKey: "AIzaSyCylVpE18RtTy-KVtzUOGQu4UpOWB-cHyM",
-        authDomain: "esp8266-shtc3-efabd.firebaseapp.com",
-        databaseURL: "https://esp8266-shtc3-efabd-default-rtdb.firebaseio.com",
-        projectId: "esp8266-shtc3-efabd",
-        storageBucket: "esp8266-shtc3-efabd.appspot.com",
-        messagingSenderId: "680482548907",
-        appId: "1:680482548907:web:1779768a73d1f375161bee"
+        apiKey: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
+        authDomain: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
+        databaseURL: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
+        projectId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
+        storageBucket: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
+        messagingSenderId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
+        appId: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION"
       };
 
       // Initialize firebase
