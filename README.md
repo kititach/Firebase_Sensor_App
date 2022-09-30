@@ -20,7 +20,7 @@
 
     <script>
      // REPLACE WITH YOUR web app's Firebase configuration
-      const firebaseConfig = {                                        //เปลี่ยน firebaseConfig ที่ได้จากสร้าง App ในรูปที่ 4
+      const firebaseConfig = {                                        //เปลี่ยน firebaseConfig ที่ได้ copy ใน Notepad
         apiKey: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
         authDomain: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
         databaseURL: "REPLACE_WITH_YOUR_Firebase_CONFIGURATION",
