@@ -12,7 +12,7 @@
     <title>ESP IoT Firebase App</title>
 
     <!-- update the version number as needed -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
 
     <!-- include only the Firebase features as you need -->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
